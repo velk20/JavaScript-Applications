@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="form">
+      <input type="text" name="title" />
+      <div>
+        <textarea name="content"></textarea>
+      </div>
+      <div>
+        <input type="submit" value="Create" />
+      </div>
+    </form>
+    <script>
+      document.getElementById('form').addEventListener('submit', onSubmit);
+
+      async function onSubmit(event) {
+        event.preventDefault();
+
+        const data = new FormData(event.target);
+
+        console.log([...data.entries()]);
+
+        const article = {
+          title: data.get('title'),
+          content: data.get('content'),
+        };
+
+        const response = await fetch('...url', {
+          method: 'post',
+          body: JSON.stringify(article),
+        });
+
+        const result = response.json();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+export const DELETE_THEATER_CONFIRM_MESSAGE = () => confirm('Do you want to delete this theater?');
